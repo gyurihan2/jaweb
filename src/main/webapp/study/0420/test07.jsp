@@ -140,10 +140,10 @@
             </tr>
             <tr>
                 <td colspan="4" class="text-center">
-                    <table class="table">
+                    <table class="table table-striped">
                         <tr>
                             <td><input type="text" name="product" id="product0" value="냉장고"/></td>
-                            <td><input type="number" name="price" id="price0" value="50000"/></td>
+                            <td><input type="number" name="price" id="price0" value="50000" style="width:100px"/></td>
                             <td><input type="number" name="su" id="su0" value="1"/></td>
                             <td><input type="hidden" name="idx" value="0"/></td>
                             <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
