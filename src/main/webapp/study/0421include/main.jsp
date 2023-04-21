@@ -34,6 +34,8 @@
 		
 	<%	} else if(sw.equals("schedule")){%>
 		<%@ include file="schedule.jsp" %>
+	<%	} else if(sw.equals("photo")){%>
+		<%@ include file="photo.jsp" %>
 	<%	} else if(sw.equals("login")){%>
 		<%@ include file="login.jsp" %>
 	<%	} else {%>

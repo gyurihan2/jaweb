@@ -12,6 +12,7 @@
 	<%if(member2.equals("ok")){ %>
 	<a href="main.jsp?sw=pds" class="btn btn-outline-primary">자료실</a> |
 	<a href="main.jsp?sw=schedule" class="btn btn-outline-primary">스케줄관리</a> |
+	<a href="main.jsp?sw=photo&member=<%=member2%>" class="btn btn-outline-primary">포토갤러리</a> |
 	<a href="main.jsp?sw=logout" class="btn btn-outline-primary">로그아웃</a> 
 	<%}else{%>
 	<a href="main.jsp?sw=login" class="btn btn-outline-primary">로그인</a> 
