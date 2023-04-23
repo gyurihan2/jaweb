@@ -24,18 +24,15 @@ public class LoginService extends HttpServlet{
 		
 		
 		vo = dao.login(mid, pwd);
+		PrintWriter out = response.getWriter();
 		
 		if(vo == null) {
-			PrintWriter out = response.getWriter();
 			out.print("<script>");
 			out.print("alert('아이디 비밀번호를 확인하세요');");
 			out.print("location.href='/javaweb/cgvProject/homePage/login.jsp';");
 			out.print("</script>");
 		}
 		else {
-			System.out.println(vo.getMid());
-			System.out.println(vo.getPwd());
-			System.out.println(vo.getName());
 			
 			request.setAttribute("mid", vo.getMid());
 			request.setAttribute("name", vo.getName());

@@ -1,8 +1,11 @@
 <%@page import="cgvProject.TopMenu.UserVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
+	request.setCharacterEncoding("utf-8");
 	String mid = request.getParameter("mid") == null ? " " : request.getParameter("mid");
 	String name = request.getParameter("name") == null ? " " : request.getParameter("name");
+	System.out.println(mid);
+	System.out.println(name);
 %>
 <jsp:include page="/cgvProject/publicPage/bootstrapV4.jsp"/>
 <style>
@@ -65,9 +68,7 @@
 		    navbar.classList.remove("sticky");
 		  }
 		}
-
     });
-    
 </script>
 
 <div class="topMenu">
@@ -81,10 +82,10 @@
                 <div class="row">
                     <div class="col" id="login">
                       	<a href="<%=request.getContextPath()%>/cgvProject/homePage/login.jsp" class="text-secondary">
-                      		<%if(!name.equals(" ")){ %>
-                        	<img src="<%=request.getContextPath()%>/cgvProject/images/login.png" style="width: 26px; height:26px;"><br/>로그인
-                      		<%}else{ %>
-                      		<img src="<%=request.getContextPath()%>/cgvProject/images/login.png" style="width: 26px; height:26px;"><br/>로그아웃
+                      		<%if(!mid.equals(" ")){ System.out.println(name);%>
+                        	<img src="<%=request.getContextPath()%>/cgvProject/images/login.png" style="width: 26px; height:26px;"><br/>로그아웃
+                      		<%}else{ System.out.println("oo"+name+"oo");%>
+                      		<img src="<%=request.getContextPath()%>/cgvProject/images/login.png" style="width: 26px; height:26px;"><br/>로그인
                       		<%} %>
                       	</a>
                     </div>  
