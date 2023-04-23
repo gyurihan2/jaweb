@@ -81,13 +81,16 @@
             <div class="container text-center">
                 <div class="row">
                     <div class="col" id="login">
-                      	<a href="<%=request.getContextPath()%>/cgvProject/homePage/login.jsp" class="text-secondary">
-                      		<%if(!mid.equals(" ")){ System.out.println(mid);%>
+                      	<%if(!mid.equals(" ")){ System.out.println(mid);%>
+                      	<a href="<%=request.getContextPath()%>/cgvProject/homePage/home.jsp" class="text-secondary">
                         	<img src="<%=request.getContextPath()%>/cgvProject/images/login.png" style="width: 26px; height:26px;"><br/>로그아웃
-                      		<%}else{ System.out.println("oo"+mid+"oo");%>
+                        </a>
+                      	<%}else{%>
+                      	<a href="<%=request.getContextPath()%>/cgvProject/homePage/login.jsp" class="text-secondary">
                       		<img src="<%=request.getContextPath()%>/cgvProject/images/login.png" style="width: 26px; height:26px;"><br/>로그인
-                      		<%} %>
                       	</a>
+                      	<%} %>
+                      	
                     </div>  
                     <div class="col"><a href="#" class="text-secondary"><img src="<%=request.getContextPath()%>/cgvProject/images/mycgv.png" style="width:26px; height:26px;"><br/>MY CGV</a></div>
                     <div class="col"><a href="#" class="text-secondary"><img src="<%=request.getContextPath()%>/cgvProject/images/register.png" style="width:26px; height:26px;"><br/>회원가입</a></div>

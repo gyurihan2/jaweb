@@ -38,7 +38,7 @@ public class LoginService extends HttpServlet{
 			
 			System.out.println("테스트: "+vo.getName());
 			
-			String viewPage="/cgvProject/homePage/loginRes.jsp";
+			String viewPage="/cgvProject/homePage/home.jsp";
 			
 			RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 			dispatcher.forward(request, response);	
