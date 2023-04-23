@@ -82,9 +82,9 @@
                 <div class="row">
                     <div class="col" id="login">
                       	<a href="<%=request.getContextPath()%>/cgvProject/homePage/login.jsp" class="text-secondary">
-                      		<%if(!mid.equals(" ")){ System.out.println(name);%>
+                      		<%if(!mid.equals(" ")){ System.out.println(mid);%>
                         	<img src="<%=request.getContextPath()%>/cgvProject/images/login.png" style="width: 26px; height:26px;"><br/>로그아웃
-                      		<%}else{ System.out.println("oo"+name+"oo");%>
+                      		<%}else{ System.out.println("oo"+mid+"oo");%>
                       		<img src="<%=request.getContextPath()%>/cgvProject/images/login.png" style="width: 26px; height:26px;"><br/>로그인
                       		<%} %>
                       	</a>

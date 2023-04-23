@@ -22,7 +22,6 @@ public class LoginService extends HttpServlet{
 		String mid = request.getParameter("mid") == null ? "" :  request.getParameter("mid");
 		String pwd = request.getParameter("pwd") == null ? "" :  request.getParameter("pwd");
 		
-		
 		vo = dao.login(mid, pwd);
 		PrintWriter out = response.getWriter();
 		
@@ -33,11 +32,13 @@ public class LoginService extends HttpServlet{
 			out.print("</script>");
 		}
 		else {
-			
+			System.out.println(vo.getMid());
 			request.setAttribute("mid", vo.getMid());
 			request.setAttribute("name", vo.getName());
 			
-			String viewPage="/cgvProject/homePage/home.jsp";
+			System.out.println("테스트: "+vo.getName());
+			
+			String viewPage="/cgvProject/homePage/loginRes.jsp";
 			
 			RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 			dispatcher.forward(request, response);	
