@@ -18,7 +18,7 @@ public class T5_LoginOk extends HttpServlet{
 		String pwd = request.getParameter("pwd") == null ? "":request.getParameter("pwd");
 		String viewPage="";
 		PrintWriter out = response.getWriter();
-		 HttpSession session  = request.getSession();
+		HttpSession session  = request.getSession();
 		
 		if((mid.equals("admin") && pwd.equals("1234"))|| (mid.equals("hkd1234") && pwd.equals("1234"))){
 			viewPage="/study/0425/storage/t5_member.jsp";

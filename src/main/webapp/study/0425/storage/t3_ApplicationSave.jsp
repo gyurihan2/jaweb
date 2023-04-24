@@ -1,6 +1,7 @@
 <!-- t3_ApplicationSave.jsp -->
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
+	System.out.println(request.getParameter("mid"));
 	String mid = request.getParameter("mid") == null ? "admin" : request.getParameter("mid");
 	String nickname = request.getParameter("nickname") == null ? "관리맨" :request.getParameter("nickname");
 	String name = request.getParameter("name") == null ? "관리자" : request.getParameter("name");

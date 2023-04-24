@@ -4,9 +4,16 @@ public class UserVO {
 	private String mid;
 	private String pwd;
 	private String name;
+	private boolean rememberMid;
 	
 	
 	
+	public boolean isRememberMid() {
+		return rememberMid;
+	}
+	public void setRememberMid(boolean rememberMid) {
+		this.rememberMid = rememberMid;
+	}
 	public UserVO(String mid, String pwd, String name) {
 		this.mid = mid;
 		this.pwd = pwd;
@@ -15,6 +22,7 @@ public class UserVO {
 	public String getMid() {
 		return mid;
 	}
+	
 	public void setMid(String mid) {
 		this.mid = mid;
 	}

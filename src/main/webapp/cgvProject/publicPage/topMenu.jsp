@@ -1,11 +1,9 @@
 <%@page import="cgvProject.TopMenu.UserVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
-	request.setCharacterEncoding("utf-8");
-	String mid = request.getParameter("mid") == null ? " " : request.getParameter("mid");
-	String name = request.getParameter("name") == null ? " " : request.getParameter("name");
-	System.out.println(mid);
-	System.out.println(name);
+	String sMid = session.getAttribute("sMid") == null ? "" : (String)session.getAttribute("sMid");
+	String sName = session.getAttribute("sName") == null ? "" : (String)session.getAttribute("sName");
+	
 %>
 <jsp:include page="/cgvProject/publicPage/bootstrapV4.jsp"/>
 <style>
@@ -74,15 +72,15 @@
 <div class="topMenu">
 	<div class="container-xl top_title  pt-3 pb-0">
     <div class="row align-items-end">
-        <div class="d-inline-flex "><a href="#"><img src="<%=request.getContextPath()%>/cgvProject/images/logo.png" style="width:117px; height:53px;"></a></div>
+        <div class="d-inline-flex "><a href="<%=request.getContextPath()%>/cgvProject/homePage/home.jsp"><img src="<%=request.getContextPath()%>/cgvProject/images/logo.png" style="width:117px; height:53px;"></a></div>
         <div class="d-inline-flex ">CULTUREPLEX</div>
         <div class="col-5"></div>
         <div class="col ">
             <div class="container text-center">
                 <div class="row">
                     <div class="col" id="login">
-                      	<%if(!mid.equals(" ")){ System.out.println(mid);%>
-                      	<a href="<%=request.getContextPath()%>/cgvProject/homePage/home.jsp" class="text-secondary">
+                      	<%if(!sMid.equals("")){%>
+                      	<a href="<%=request.getContextPath()%>/loginOut" class="text-secondary">
                         	<img src="<%=request.getContextPath()%>/cgvProject/images/login.png" style="width: 26px; height:26px;"><br/>로그아웃
                         </a>
                       	<%}else{%>
@@ -102,7 +100,7 @@
 </div>
 
 <div id="mainMenu">
-	<div class="container-xl">
+	<div class="container-xl" style="width: 1140px">
 	   	<div class="row align-items-center">
 	        <div class="col">
 	            <nav class="navbar navbar-expand-xl">
