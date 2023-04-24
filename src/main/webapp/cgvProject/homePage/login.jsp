@@ -27,7 +27,7 @@
 		out.print("<script>");
 		out.print("$(function(){");
 		out.print("$('#rememberMid').prop('checked', true);");
-		
+		out.print("$('#rememberMid').val('1');");
 		out.print("});");
 		out.print("</script>");
 	}

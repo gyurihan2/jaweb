@@ -23,6 +23,7 @@ public class LoginService extends HttpServlet{
 		String pwd = request.getParameter("pwd") == null ? "" :  request.getParameter("pwd");
 		String rememberMid = request.getParameter("rememberMid") == null ? "" : request.getParameter("rememberMid");
 		
+		System.out.println("rememberMid: "+rememberMid);
 		//아이디 기억 체크가 되어있을경우 쿠키 생성
 		if(rememberMid.equals("1")) {
 			Cookie cRememberMid = new Cookie("cRemeberMid",rememberMid);
