@@ -16,6 +16,7 @@ import javax.servlet.http.HttpSession;
 public class LoginService extends HttpServlet{
 	private UserVO vo;
 	private TopMenuDAO dao = new TopMenuDAO();
+	HttpSession session;
 	
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -28,11 +29,11 @@ public class LoginService extends HttpServlet{
 		if(rememberMid.equals("1")) {
 			Cookie cRememberMid = new Cookie("cRemeberMid",rememberMid);
 			Cookie cMid = new Cookie("cMid",mid);
-			
 			cRememberMid.setMaxAge(60*60*24*31);
 			cMid.setMaxAge(60*60*24*31);
 			response.addCookie(cRememberMid);
 			response.addCookie(cMid);
+			
 			
 		}
 		else{
@@ -42,6 +43,7 @@ public class LoginService extends HttpServlet{
 				if(cookies[i].getName().equals("cRemeberMid")){
 					cookies[i].setMaxAge(0);
 					response.addCookie(cookies[i]);	
+					System.out.println("쿠키 기본 경로" + cookies[i].getPath());
 				}
 				else if(cookies[i].getName().equals("cMid")) {
 					cookies[i].setMaxAge(0);
@@ -53,7 +55,7 @@ public class LoginService extends HttpServlet{
 		vo = dao.login(mid, pwd);
 		PrintWriter out = response.getWriter();
 		
-		HttpSession session = request.getSession();
+		session = request.getSession();
 
 		
 		// 로그인 되었을경우 Session  생성
@@ -77,5 +79,9 @@ public class LoginService extends HttpServlet{
 		}
 		
 		
+	}
+	@Override
+	public void destroy() {
+		if(session != null) session.invalidate();
 	}
 }

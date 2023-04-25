@@ -4,6 +4,7 @@
 	String sMid = session.getAttribute("sMid") == null ? "" : (String)session.getAttribute("sMid");
 	String sName = session.getAttribute("sName") == null ? "" : (String)session.getAttribute("sName");
 	
+	String sId = session.getId();
 %>
 <jsp:include page="/cgvProject/publicPage/bootstrapV4.jsp"/>
 <style>
@@ -68,7 +69,7 @@
 		}
     });
 </script>
-
+<div><%=sId %></div>
 <div class="topMenu">
 	<div class="container-xl top_title  pt-3 pb-0">
     <div class="row align-items-end">
