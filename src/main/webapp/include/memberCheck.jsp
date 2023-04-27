@@ -4,8 +4,6 @@
 <%
 	String memberMid = session.getAttribute("sMid") == null ? "" : (String)session.getAttribute("sMid");
 	
-System.out.println("mdi:"+memberMid);
-	
 	if(memberMid.equals("")){
 %>
 	<script>
