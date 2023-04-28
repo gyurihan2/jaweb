@@ -16,8 +16,6 @@ public class Ex1Reset extends HttpServlet{
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Ex1Save.vos.clear();
-		HttpSession session = request.getSession();
-		session.removeAttribute("savePaint");
 		
 		PrintWriter out = response.getWriter();
 		out.print("<script>");

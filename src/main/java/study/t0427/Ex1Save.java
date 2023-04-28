@@ -15,7 +15,7 @@ import javax.servlet.http.HttpSession;
 @WebServlet("/0427/ex1Save")
 public class Ex1Save extends HttpServlet{
 	public static List<String[]> vos = new ArrayList<>();
-	
+	private HttpSession session;
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String imgName = request.getParameter("imgName") == null ? "" : request.getParameter("imgName");
@@ -45,5 +45,11 @@ public class Ex1Save extends HttpServlet{
 		out.print("alert('값이 저장되었습니다');");
 		out.print("location.href='"+request.getContextPath()+"/study/0427/jstl_Ex1.jsp'");
 		out.print("</script>");
+	}
+	
+	@Override
+	public void destroy() {
+		vos.clear();
+		session.invalidate();
 	}
 }
