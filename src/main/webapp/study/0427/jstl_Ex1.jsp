@@ -52,6 +52,7 @@
 			<br/>
 		</c:forEach>
 	 </c:if>
+	 <!-- < c:if test=" $ {empty content }" : Null이거나 공백이이면 true !empty ->> Null 또는 공백이면 false -->
   </div>
 </div>
 <p><br/></p>
