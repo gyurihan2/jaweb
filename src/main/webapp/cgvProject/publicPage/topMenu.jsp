@@ -1,12 +1,8 @@
-<%@page import="cgvProject.TopMenu.UserVO"%>
+<%@page import="cgvProject.TopMenu.LoginVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%
-	String sMid = session.getAttribute("sMid") == null ? "" : (String)session.getAttribute("sMid");
-	String sName = session.getAttribute("sName") == null ? "" : (String)session.getAttribute("sName");
-	
-	String sId = session.getId();
-%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <jsp:include page="/cgvProject/publicPage/bootstrapV4.jsp"/>
+<c:set var="ctp" value="${pageContext.request.contextPath}"/>
 <style>
 .topMenu {
   background-color: #f1f1f1;
@@ -69,7 +65,7 @@
 		}
     });
 </script>
-<div><%=sId %></div>
+<div>Session 아이디 :${pageContext.session.id}</div>
 <div class="topMenu">
 	<div class="container-xl top_title  pt-3 pb-0">
     <div class="row align-items-end">
@@ -80,19 +76,30 @@
             <div class="container text-center">
                 <div class="row">
                     <div class="col" id="login">
-                      	<%if(!sMid.equals("")){%>
-                      	<a href="<%=request.getContextPath()%>/loginOut" class="text-secondary">
-                        	<img src="<%=request.getContextPath()%>/cgvProject/images/login.png" style="width: 26px; height:26px;"><br/>로그아웃
-                        </a>
-                      	<%}else{%>
-                      	<a href="<%=request.getContextPath()%>/cgvProject/homePage/login.jsp" class="text-secondary">
-                      		<img src="<%=request.getContextPath()%>/cgvProject/images/login.png" style="width: 26px; height:26px;"><br/>로그인
-                      	</a>
-                      	<%} %>
-                      	
+                    	<c:choose>
+                    		<c:when test="${!empty sMid}">
+		                      	<a href="<%=request.getContextPath()%>/loginOut" class="text-secondary">
+		                        	<img src="<%=request.getContextPath()%>/cgvProject/images/login.png" style="width: 26px; height:26px;"><br/>로그아웃
+		                        </a>
+                    		</c:when>
+                    		<c:otherwise>
+		                      	<a href="<%=request.getContextPath()%>/cgvProject/homePage/login.jsp" class="text-secondary">
+		                      		<img src="<%=request.getContextPath()%>/cgvProject/images/login.png" style="width: 26px; height:26px;"><br/>로그인
+		                      	</a>
+                    		</c:otherwise>
+                    	</c:choose>
                     </div>  
                     <div class="col"><a href="#" class="text-secondary"><img src="<%=request.getContextPath()%>/cgvProject/images/mycgv.png" style="width:26px; height:26px;"><br/>MY CGV</a></div>
-                    <div class="col"><a href="#" class="text-secondary"><img src="<%=request.getContextPath()%>/cgvProject/images/register.png" style="width:26px; height:26px;"><br/>회원가입</a></div>
+                   	<div class="col">
+	                   <c:choose>
+	                   <c:when test="${empty sMid}">
+		                    <a href="${ctp}/cgvProject/homePage/signUp.jsp" class="text-secondary"><img src="<%=request.getContextPath()%>/cgvProject/images/register.png" style="width:26px; height:26px;"><br/>회원가입</a>
+	                   	</c:when>
+	                   	<c:otherwise>
+	                   		<c:out value="${sName}"/> 로그인중입니다.
+	                   	</c:otherwise>
+	                   </c:choose>
+                   	</div>
                 </div>
             </div>
         </div>

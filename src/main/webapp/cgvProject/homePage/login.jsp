@@ -117,30 +117,43 @@ button:hover {
 
 </head>
 <body>
-
-	<form id="loginForm" class="mt-10" action="<%=request.getContextPath()%>/login">
-		<div class="container text-center" style="width: 1000px">
-			<div class="row justify-content-start">
-				<div class="d-flex align-items-center justify-content-end"  style="width: 60px">
-					<div><b>ID</b></div>
-				</div>
-				<div class="d-flex align-self-center">
+	<form id="loginForm" class="mt-5" action="<%=request.getContextPath()%>/login">
+		<div class="container" style="width: 1000px">
+		<h3>로그인</h3>
+			<div class="row">
+				<label class="col-2 d-flex align-items-center justify-content-end" for="id"><b>ID</b></label>
+				<div class="col d-flex">
 				  	<input type="text" placeholder="아이디를 입력하세요" id="id" name="mid" required autofocus value="<%=cMid%>">
 				</div>
+			  	<div class="col-2"></div>
 		  	</div>
 			<div class="row">
-			  	<label for="pwd"><b>Password</b></label>
-			  	<input type="password" placeholder="비밀번호를 입력하세요" id="pwd" name="pwd" required>
+			  	<label class="col-2 d-flex align-items-center justify-content-end" for="pwd"><b>Password</b></label>
+			  	<div class="col d-flex">
+			  		<input type="password" placeholder="비밀번호를 입력하세요" id="pwd" name="pwd" required>
+			  	</div>
+			  	<div class="col-2"></div>
 		  	</div>
 		  	<div class="row">
-			  	<label>
-				<input type="checkbox" name="rememberMid"  id="rememberMid" style="margin-bottom:15px" value="0"> Remember me
-			  	</label>
+		  		<div class="col-1"></div>
+		  		<div class="col-2">
+				  	<label>
+					<input type="checkbox" name="rememberMid"  id="rememberMid" style="margin-bottom:15px" value="0"> 아이디 기억
+				  	</label>
+		  		</div>
+		  		<div class="col-2">
+				  	<p>회원가입 <a href="#" style="color:dodgerblue">Click</a>.</p>
+		  		</div>
+		  		<div class="col"></div>
 		  	</div >
-		  	<p>회원가입 <a href="#" style="color:dodgerblue">Click</a>.</p>
 		  	<div class="clearfix row">
-				<button type="button" class="cancelbtn">Cancel</button>
-				<button type="submit" class="signupbtn">Sign Up</button>
+		  		<div class="col-1"></div>
+		  		<div class="col-2">
+					<button type="submit" class="signupbtn">Sign Up</button>
+		  		</div>
+		  		<div class="col-2">
+					<button type="button" class="cancelbtn">Cancel</button>
+		  		</div>
 		  	</div>
 		</div>
 	  </form>

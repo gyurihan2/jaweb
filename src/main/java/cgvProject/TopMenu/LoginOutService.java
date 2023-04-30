@@ -20,8 +20,7 @@ public class LoginOutService extends HttpServlet{
 		
 		String mid = (String)session.getAttribute("sMid");
 		
-		session.removeAttribute("sMid");
-		session.removeAttribute("sName");
+		session.invalidate();
 		
 		out.print("<script>");
 		out.print("alert('"+mid+"님 로그아웃 되셨습니다.');");

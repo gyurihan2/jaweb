@@ -14,7 +14,7 @@ import javax.servlet.http.HttpSession;
 
 @WebServlet("/login")
 public class LoginService extends HttpServlet{
-	private UserVO vo;
+	private LoginVO vo;
 	private TopMenuDAO dao = new TopMenuDAO();
 	HttpSession session;
 	
@@ -24,7 +24,7 @@ public class LoginService extends HttpServlet{
 		String pwd = request.getParameter("pwd") == null ? "" :  request.getParameter("pwd");
 		String rememberMid = request.getParameter("rememberMid") == null ? "" : request.getParameter("rememberMid");
 		
-		System.out.println("rememberMid: "+rememberMid);
+		
 		//아이디 기억 체크가 되어있을경우 쿠키 생성
 		if(rememberMid.equals("1")) {
 			Cookie cRememberMid = new Cookie("cRemeberMid",rememberMid);
@@ -60,22 +60,26 @@ public class LoginService extends HttpServlet{
 		
 		// 로그인 되었을경우 Session  생성
 		if(vo == null) {
+			int loginCnt = session.getAttribute("sLoginCnt") == null ? 0 : (int)session.getAttribute("sLoginCnt");
+			session.setAttribute("sLoginCnt", loginCnt+1);
+			
 			out.print("<script>");
-			out.print("alert('아이디 비밀번호를 확인하세요');");
+			
+			if(loginCnt+1 >= 5) out.print("alert('아이디 비밀번호를 5회 이상 틀렸습니다');");
+			else out.print("alert('아이디 비밀번호를 확인하세요');");				
+
 			out.print("location.href='/javaweb/cgvProject/homePage/login.jsp';");
-			out.print("</script>");
+			out.print("</script>");	
 		}
 		else {
 			session.setAttribute("sMid", vo.getMid());
-			session.setAttribute("sPwd", vo.getName());
-			
-			
+			session.setAttribute("sName", vo.getName());
+			session.setAttribute("sLoginCnt", 0);
 			String viewPage= request.getContextPath()+"/cgvProject/homePage/home.jsp";
 			out.print("<script>");
 			out.print("alert('"+vo.getMid()+"님이 로그인 하셨습니다.');");
 			out.print("location.href='"+viewPage+"';");
-			out.print("</script>");
-				
+			out.print("</script>");		
 		}
 		
 		
