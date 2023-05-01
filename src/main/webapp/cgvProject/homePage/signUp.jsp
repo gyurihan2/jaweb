@@ -19,6 +19,21 @@
             margin: 0;
         }
     </style>
+     <script>
+        jQuery(function(){
+            $("#mid").change(function(){
+                // alert(this.value);
+                regMid(this);
+            });
+
+            $("#pwd1").change(function(){
+                regPwd(this);
+            });
+            $("#pwd2").change(function(){
+                chkPwd(this);
+            });
+        });
+    </script>
 </head>
 <body>
    <div class="container-fluid ">
