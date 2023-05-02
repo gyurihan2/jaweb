@@ -19,7 +19,7 @@
   	function deleteCheck(){
   		let ans =confirm("정말 탈퇴하시겠습니까?");
   		
-  		if(ans) location.href="${ctp}/database/DeleteOk;"; 
+  		if(ans) location.href="${ctp}/database/DeleteOk.re;"; 
   	}
   </script>
 </head>
@@ -60,7 +60,7 @@
   </table>
   <br/>
   <p>
-    <a href="${ctp}/study/0428_database/memberMain.re" class="btn btn-success mr-3">돌아가기</a>
+    <a href="${ctp}/study/0428_database/MemberMain.re" class="btn btn-success mr-3">돌아가기</a>
     <c:if test="${sMid == vo.mid}">
 	    <a href="${ctp}/database/Update.re" class="btn btn-success mr-3">정보수정</a>
 	    <a href="javascript:deleteCheck()" class="btn btn-success mr-3">회원탈퇴</a>     
