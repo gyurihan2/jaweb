@@ -29,6 +29,9 @@
 				else if(idx==4){
 					myform.action="${ctp}/PassInputOk.st"
 				}
+				else if(idx==5){
+					myform.action="${ctp}/PassLoginOk.st"
+				}
 				else{
 					myform.action="${ctp}/PassOk2.st"
 				}
@@ -52,6 +55,7 @@
 				<input type="button" value="확인" onclick="pwdCheck(2)" class="btn btn-warning"/>
 				<input type="button" value="확인(SHA-256)" onclick="pwdCheck(3)" class="btn btn-warning"/>
 				<input type="button" value="확인(연습)" onclick="pwdCheck(4)" class="btn btn-warning"/>
+				<input type="button" value="확인(연습 체크)" onclick="pwdCheck(5)" class="btn btn-warning"/>
 			</p></td></tr>
 			
 		</table>

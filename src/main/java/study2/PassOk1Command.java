@@ -22,7 +22,7 @@ public class PassOk1Command implements StudyIngerface {
 		if(idx == 1) {
 			//숫자만 넘오 올경우
 			//암호화를 위한 키 설정(0x1234ABCD) 16진수
-			int key = 0x1324ABCD;
+			int key = 0x123ABC;
 			int encPwd, decPwd;
 			
 			//암호화 EOR : ^

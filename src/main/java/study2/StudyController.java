@@ -30,11 +30,13 @@ public class StudyController extends HttpServlet{
 			command.execute(request, response);
 			viewPage += "/password/password2.jsp";
 		}
+		// 아이디/비밀번호 입력		
 		else if(com.equals("/PassInputOk")){
 			command = new PassInputOkCommand();
 			command.execute(request, response);
 			viewPage = "/include/message.jsp";
 		}
+		// 로그인
 		else if(com.equals("/PassLoginOk")){
 			command = new PassLoginOkCommand();
 			command.execute(request, response);
