@@ -13,7 +13,7 @@
 				<a class="nav-link" href="${pageContext.request.contextPath}/GuestList.gu">Guest</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="#">Board</a>
+				<a class="nav-link" href="${pageContext.request.contextPath}/BoardList.bo">Board</a>
 			</li>
 			<li class="nav-item">
 				<a class="nav-link" href="#">PDS</a>
@@ -30,6 +30,7 @@
 					<a class="dropdown-item" href="${pageContext.request.contextPath}/mapping/Test05.do">URL Mapping(확장자1)</a>
 					<a class="dropdown-item" href="${pageContext.request.contextPath}/mapping2/Test05.mi">URL Mapping(확장자2)</a>
 					<a class="dropdown-item" href="${pageContext.request.contextPath}/study/0428_database/Login.re">로그인 연습2</a>
+					<a class="dropdown-item" href="${pageContext.request.contextPath}/Password.st">패스워드</a>
 					</div>
 				</div> 
 			</li>   
