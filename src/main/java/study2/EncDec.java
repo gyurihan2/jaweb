@@ -5,7 +5,11 @@ public class EncDec {
 	public String passEnc(int keyIdx,String pwd) {
 		
 		PassDAO dao = new PassDAO();
+		
+		//키값 받아오기
 		String keyStrTmp = dao.getKey(keyIdx);
+		
+		// DB에서 받아온 키값 -> ASCII값 ->  16진수 문자열로 저장
 		String key="";
 		for(int i=0; i<keyStrTmp.length(); i++) {
 			key += Integer.toHexString(keyStrTmp.charAt(i));
