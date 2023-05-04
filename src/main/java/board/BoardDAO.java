@@ -61,7 +61,7 @@ public class BoardDAO {
 		ArrayList<BoardVO> vos = new ArrayList<>();
 		
 		try {
-			sql="select * from board order by idx desc limit ?, ?";
+			sql="select *,TIMESTAMPDIFF(hour,wDate,now()) as hour_diff, datediff(wDate,now()) as day_diff from board order by idx desc limit ?, ?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, start);
 			pstmt.setInt(2, end);
@@ -81,6 +81,10 @@ public class BoardDAO {
 				vo.setOpenSw(rs.getString("openSw"));
 				vo.setwDate(rs.getString("wDate"));
 				vo.setGood(rs.getInt("good"));
+				
+				// DB Alias
+				vo.setHour_diff(rs.getInt("hour_diff"));
+				vo.setDay_diff(rs.getInt("day_diff"));
 				
 				vos.add(vo);
 			}

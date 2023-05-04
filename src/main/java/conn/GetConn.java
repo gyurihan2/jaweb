@@ -14,7 +14,7 @@ public class GetConn {
 	private String driver = "com.mysql.jdbc.Driver";
 	private String url ="jdbc:mysql://localhost:3306/javaweb";
 	private String user="root";
-	private String password="root";
+	private String password="1234";
 	
 	private static GetConn instance= new GetConn();
 	

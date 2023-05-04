@@ -50,9 +50,24 @@
 		<c:forEach var="vo" items="${vos}" varStatus="st">
 			<tr>
 				<td>${curScrStartNo-st.index}</td>
-				<td>${vo.title}</td>
+				<td>
+					${vo.title}
+					<c:if test="${vo.hour_diff <= 24}">
+						<img src="${ctp}/images/new.gif"/>
+					</c:if>
+				</td>
 				<td>${vo.nickName}</td>
-				<td>${fn:substring(vo.wDate,0,19)}</td>
+				<td>
+					
+					<!-- 24시간 이내는 시간만 표시, 이후는 날짜 시간 표시 -->
+					<c:if test="${vo.hour_diff <= 24}">
+						${vo.day_diff == 0 ? fn:substring(vo.wDate,11,16) : fn:substring(vo.wDate,0,19) }
+					</c:if>
+					
+					<c:if test="${vo.hour_diff gt 24}">
+						${fn:substring(vo.wDate,0,19)}	
+					</c:if>				
+				</td>
 				<td>${vo.readNum}</td>
 				<td>${vo.good}</td>
 			</tr>
