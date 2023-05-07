@@ -6,8 +6,8 @@ public class El03VO {
 	private String gender;
 	private String job;
 	private String address;
-	
-	
+
+
 	public String getName() {
 		return name;
 	}
@@ -63,6 +63,6 @@ public class El03VO {
 		return "El3VO [name=" + name + ", age=" + age + ", gender=" + gender + ", job=" + job + ", address="
 				+ address + "]";
 	}
-	
-	
+
+
 }

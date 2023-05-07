@@ -15,7 +15,7 @@ public class Test06 extends HttpServlet{
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html; charset=utf-8");
 		PrintWriter out = response.getWriter();
-		
+
 		out.println("안녕 난 한글~~~<br/>");
 		out.println("Goob bye ~~~<br/>");
 	}

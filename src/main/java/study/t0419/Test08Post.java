@@ -16,19 +16,19 @@ public class Test08Post extends HttpServlet{
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html; charset=utf-8");
-		
+
 		String name = request.getParameter("name");
 		int age = Integer.parseInt(request.getParameter("age"));
-		
+
 		PrintWriter out = response.getWriter();
-		
+
 		System.out.println("성명: " +name);
 		System.out.println("나이: " +age);
-		
+
 		out.print("성명:"+name+"<br/>");
 		out.print("나이:"+age+"<br/>");
 //		out.print("<a href='/javaweb/study/0419/test08.jsp'>돌아가기</a>");
 		out.print("<a href='"+request.getContextPath()+"/study/0419/test08.jsp'>돌아가기</a>");
-		
+
 	}
 }

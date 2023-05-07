@@ -15,21 +15,21 @@ public class Test02ok extends HttpServlet{
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html; charset=utf-8");
-		
-		String name = request.getParameter("name") == null ? "": request.getParameter("name"); 
-		String hakbun = request.getParameter("hakbun") == null ? "": request.getParameter("hakbun"); 
-		
+
+		String name = request.getParameter("name") == null ? "": request.getParameter("name");
+		String hakbun = request.getParameter("hakbun") == null ? "": request.getParameter("hakbun");
+
 		int kor = request.getParameter("kor") == null ? 0 : Integer.parseInt(request.getParameter("kor"));
 		int eng = request.getParameter("eng") == null ? 0 : Integer.parseInt(request.getParameter("eng"));
 		int mat = request.getParameter("mat") == null ? 0 : Integer.parseInt(request.getParameter("mat"));
 		int soc = request.getParameter("soc") == null ? 0 : Integer.parseInt(request.getParameter("soc"));
 		int sci = request.getParameter("sci") == null ? 0 : Integer.parseInt(request.getParameter("sci"));
-		
+
 		int tot = kor + eng +mat + soc +sci;
 		double avg = tot/5.0;
-		
+
 		char grade =' ';
-		
+
 		switch((int)(avg/10)) {
 			case 10:
 			case 9:
@@ -47,15 +47,15 @@ public class Test02ok extends HttpServlet{
 			default:
 				grade='F';
 		}
-		
+
 		Test02VO vo = new Test02VO(name, hakbun, kor, eng, mat, soc, sci, tot, avg, grade);
-		
+
 		request.setAttribute("vo", vo);
-		
+
 		String viewPage="/study/0423/test02Res.jsp";
-		
+
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 		dispatcher.forward(request, response);
-	
+
 	}
 }

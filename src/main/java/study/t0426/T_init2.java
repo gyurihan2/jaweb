@@ -15,22 +15,22 @@ public class T_init2 extends HttpServlet{
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("이곳은 service() 입니다.");
-		
+
 		getInitParameter("iMid");
 //		System.out.println("logoName: " + logoName);
 //		System.out.println("homeAdderss: " + homeAdderss);
-		
+
 		HttpSession session = request.getSession();
 		session.setAttribute("iMid",getInitParameter("iMid"));
 		session.setAttribute("iPwd",getInitParameter("iPwd"));
-		
+
 //		session.setAttribute("logoName", logoName);
 //		session.setAttribute("homeAdderss", homeAdderss);
-		
+
 		String viewPage = "/study/0426/t_initRes2.jsp";
-		
+
 		request.getRequestDispatcher(viewPage).forward(request, response);
 //		response.sendRedirect("/javaweb"+viewPage);
-		
+
 	}
 }

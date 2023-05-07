@@ -15,8 +15,8 @@ public class ListCommand implements LoginInterface {
 	LoginVO vo;
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		
+
+
 		ArrayList<LoginVO> vos = dao.getLoginList();
 		request.setAttribute("vos", vos);
 

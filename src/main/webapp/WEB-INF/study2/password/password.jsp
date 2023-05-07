@@ -49,7 +49,7 @@
 	<form name="myform" method="post">
 		<table	class="table table-bodered">
 			<tr><td><p>아이디: <input type="text" name="mid" id="mid" value="hkd1234" class="form-control"/></p></td></tr>
-			<tr><td><p>비밀번호: <input type="password" name="pwd" id="pwd" maxlength="9" class="form-control" autofocus/></p></td></tr>
+			<tr><td><p>비밀번호: <input type="text" name="pwd" id="pwd" maxlength="9" class="form-control" autofocus/></p></td></tr>
 			<tr><td><p>
 				<input type="button" value="확인(숫자비번)" onclick="pwdCheck(1)" class="btn btn-success"/>
 				<input type="button" value="확인" onclick="pwdCheck(2)" class="btn btn-warning"/>

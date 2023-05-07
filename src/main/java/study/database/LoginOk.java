@@ -20,17 +20,17 @@ public class LoginOk extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String mid = request.getParameter("mid")==null ? "" : request.getParameter("mid");
 		String pwd = request.getParameter("pwd")==null ? "" : request.getParameter("pwd");
-		
+
 		LoginDAO dao = new LoginDAO();
-		
+
 		LoginVO vo = dao.getLoginCheck(mid, pwd);
-		
+
 		PrintWriter out = response.getWriter();
-		
+
 		if(vo.getName() != null) {
 			// 회원 인증 성공시 처리...
 			// 회원인증후 처리(1.자주사용하는자료를 세션에 저장(아이디,성명,닉네임),  2.쿠키에 아이디 저장또는 제거하기)
-			
+
 			/*
 			 방문포인트 처리하기('최종접속일처리'/'방문카운트'도 함께한다.)
 			 db의 최종접속일(10자리)와 시스템날짜(10자리)를 비교하여 같으면 todaCount = vo.getTodayCount()+1, 같지않으면 todayCount = 0
@@ -38,12 +38,12 @@ public class LoginOk extends HttpServlet {
 			 작업처리후 다음과같이 메소드호출하여 DB처리한다.
 			 dao.setPointPlus(mid, todayCount, point);
 			*/
-			
+
 			// 날짜 비교
 			Date today = new Date();
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 			String strToday = sdf.format(today);
-			
+
 			int todayCount = vo.getTodayCount();
 			int point = 0;
 			String lastDate = vo.getLastDate();
@@ -56,13 +56,13 @@ public class LoginOk extends HttpServlet {
 				todayCount = 1;
 				point = vo.getPoint() + 10;
 			}
-			
+
 			// 변경된 사항을 update한다.
 			dao.setPointPlus(mid, point, todayCount);
-			
+
 			// 변경된 사항을 다시 불러온다.
-			vo = dao.getLoginCheck(mid, pwd);			
-			
+			vo = dao.getLoginCheck(mid, pwd);
+
 			// 1.세션처리
 			HttpSession session = request.getSession();
 			session.setAttribute("sMid", mid);
@@ -70,8 +70,8 @@ public class LoginOk extends HttpServlet {
 			session.setAttribute("sPoint", vo.getPoint());
 			session.setAttribute("sLastDate", lastDate);
 			session.setAttribute("sTodayCount", vo.getTodayCount());
-			
-			
+
+
 			// 2.쿠키에 아이디를 저장/해제 처리한다.
 			// 로그인시 아이디저장시킨다고 체크하면 쿠키에 아이디 저장하고, 그렇지 않으면 쿠키에서 아이디를 제거한다.
 			String idSave = request.getParameter("idSave")==null ? "off" : "on";
@@ -84,8 +84,8 @@ public class LoginOk extends HttpServlet {
 				cookieMid.setMaxAge(0);
 			}
 			response.addCookie(cookieMid);
-			
-			
+
+
 			// 정상 로그인Ok이후에 모든 처리가 끝나면 memberMain.jsp로 보내준다.
 			out.print("<script>");
 			out.print("alert('"+mid+"님 로그인 되었습니다.');");

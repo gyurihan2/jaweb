@@ -13,23 +13,23 @@ public class UpdateOkCommand implements LoginInterface {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 HttpSession session = request.getSession();
-		
+
 		String pwd = request.getParameter("pwd") == null ? "" : request.getParameter("pwd");
 		String name = request.getParameter("name") == null ? "" : request.getParameter("name");
 		String mid = (String) session.getAttribute("sMid");
-		
+
 		LoginVO vo = new LoginVO();
-		
+
 		vo.setMid(mid);
 		vo.setName(name);
 		vo.setPwd(pwd);
-		
+
 		LoginDAO dao = new LoginDAO();
-		
+
 		int res = dao.setUpdateOk(vo);
-		
+
 		PrintWriter out = response.getWriter();
-		
+
 		if(res == 1) {
 			session.setAttribute("sName", name);
 			request.setAttribute("msg", "개인정보가 수정되었습니다.");

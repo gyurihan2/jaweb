@@ -20,8 +20,8 @@ public class Ex1Save extends HttpServlet{
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String imgName = request.getParameter("imgName") == null ? "" : request.getParameter("imgName");
 		String paintName = request.getParameter("paintName") == null ? "" : request.getParameter("paintName");
-		
-		
+
+
 		PrintWriter out = response.getWriter();
 		if(imgName.equals("") || paintName.equals("")) {
 			out.print("<script>");
@@ -31,7 +31,7 @@ public class Ex1Save extends HttpServlet{
 		}
 		else {
 			HttpSession session = request.getSession();
-			
+
 			System.out.println("세션 시작"+session.getAttribute("savePaint"));
 			if(session.getAttribute("savePaint") == null) {
 				session.setAttribute("savePaint", vos);
@@ -39,14 +39,14 @@ public class Ex1Save extends HttpServlet{
 			}
 			String[] savePaint = {imgName,paintName};
 			vos.add(savePaint);
-			
+
 		}
 		out.print("<script>");
 		out.print("alert('값이 저장되었습니다');");
 		out.print("location.href='"+request.getContextPath()+"/study/0427/jstl_Ex1.jsp'");
 		out.print("</script>");
 	}
-	
+
 	@Override
 	public void destroy() {
 		vos.clear();

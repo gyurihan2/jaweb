@@ -19,12 +19,12 @@ public class T5_LoginOk extends HttpServlet{
 		String viewPage="";
 		PrintWriter out = response.getWriter();
 		HttpSession session  = request.getSession();
-		
+
 		if((mid.equals("admin") && pwd.equals("1234"))|| (mid.equals("hkd1234") && pwd.equals("1234"))){
 			viewPage="/study/0425/storage/t5_member.jsp";
-			
+
 			session.setAttribute("sMid",mid);
-			
+
 			out.print("<script>");
 			out.print("alert('로그인 되었습니다.');");
 			out.print("location.href='"+request.getContextPath()+"/study/0425/storage/t5_member.jsp'");

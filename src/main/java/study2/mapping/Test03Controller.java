@@ -13,7 +13,7 @@ public class Test03Controller extends HttpServlet{
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String viewPage="/WEB-INF/study2/mapping/test03.jsp";
-		
+
 		request.getRequestDispatcher(viewPage).forward(request, response);
 	}
 }

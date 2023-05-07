@@ -43,7 +43,7 @@ create table member(
 	photo	varchar(100) default 'noimage.jpg', 
 	content text,								
 	userInfor char(6) default '공개',			
-	userDel	char(2) default 'NO',				
+	userDel	char(2) default 'NO',
 	point	int default 100,					
 	level	int default	1,						
 	visitCnt int default 0,						
@@ -54,3 +54,7 @@ create table member(
 );
 
 desc member;
+
+select * from member where mid='admin' and pwd='1234@1234';
+select * from member where name='관리자' and email='admin@naver.com';
+select * from member where nickName='관리자' ;

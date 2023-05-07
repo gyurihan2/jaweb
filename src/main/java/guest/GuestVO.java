@@ -45,11 +45,11 @@ public class GuestVO {
 	public void setIdx(int idx) {
 		this.idx = idx;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "GuestVO [name=" + name + ", content=" + content + ", email=" + email + ", homePage=" + homePage
 				+ ", visitDate=" + visitDate + ", hostIp=" + hostIp + ", idx=" + idx + "]";
 	}
-	
+
 }

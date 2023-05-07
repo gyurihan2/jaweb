@@ -15,10 +15,10 @@ public class ListUpdateCommand implements LoginInterface {
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		LoginDAO dao = new LoginDAO();
-		
+
 		String mid = (String)session.getAttribute("sMid");
 		LoginVO vo = dao.getMidCheck(mid);
-		
+
 		request.setAttribute("vo", vo);
 
 	}

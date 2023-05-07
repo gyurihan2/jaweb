@@ -15,14 +15,14 @@ public class Update extends HttpServlet{
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		LoginDAO dao = new LoginDAO();
-		
-		
+
+
 		String mid = (String)session.getAttribute("sMid");
-		
+
 		LoginVO vo = dao.getMidCheck(mid);
-		
+
 		request.setAttribute("vo", vo);
-		
+
 		String viewPage="/study/0428_database/update.jsp";
 		request.getRequestDispatcher(viewPage).forward(request, response);
 	}

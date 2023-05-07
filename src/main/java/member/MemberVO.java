@@ -151,6 +151,6 @@ public class MemberVO {
 				+ photo + ", content=" + content + ", userInfor=" + userInfor + ", userDel=" + userDel + ", startDate="
 				+ startDate + ", lastDate=" + lastDate + "]";
 	}
-	
-	
+
+
 }

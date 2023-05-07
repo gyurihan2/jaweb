@@ -17,19 +17,19 @@ public class JoinOk extends HttpServlet {
 		String mid = request.getParameter("mid")==null ? "" : request.getParameter("mid");
 		String pwd = request.getParameter("pwd")==null ? "" : request.getParameter("pwd");
 		String name = request.getParameter("name")==null ? "" : request.getParameter("name");
-		
+
 		LoginVO vo = new LoginVO();
-		
+
 		vo.setMid(mid);
 		vo.setPwd(pwd);
 		vo.setName(name);
-		
+
 		LoginDAO dao = new LoginDAO();
-		
+
 		LoginVO vo2 = dao.getMidCheck(mid);
-		
+
 		PrintWriter out = response.getWriter();
-		
+
 		if(vo2.getMid() != null) {
 			// 아이디가 중복되었음.
 			out.print("<script>");

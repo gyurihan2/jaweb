@@ -3,11 +3,11 @@ package board;
 public class BoardVO {
 	private int idx,good,readNum;
 	private String mid,nickName,title,email,homePage,content,hostIp,openSw,wDate;
-	
-	// DB Alias	
+
+	// DB Alias
 	private int hour_diff,day_diff;
-	
-	
+
+
 	public int getIdx() {
 		return idx;
 	}
@@ -99,8 +99,8 @@ public class BoardVO {
 				+ ", hostIp=" + hostIp + ", openSw=" + openSw + ", wDate=" + wDate + ", hour_diff=" + hour_diff
 				+ ", day_diff=" + day_diff + "]";
 	}
-	
-	
-	
-	
+
+
+
+
 }

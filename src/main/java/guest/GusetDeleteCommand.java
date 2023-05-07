@@ -12,9 +12,9 @@ public class GusetDeleteCommand implements GuestInterface {
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		int idx = request.getParameter("idx") == null ? 0: Integer.parseInt(request.getParameter("idx"));
-		
+
 		GuestDAO dao = new GuestDAO();
-		
+
 		int res = dao.setGusetDelete(idx);
 
 		if(res == 1) {
@@ -23,7 +23,7 @@ public class GusetDeleteCommand implements GuestInterface {
 		else {
 			request.setAttribute("msg", "삭제처리 실패 ~~");
 		}
-		
+
 		request.setAttribute("url", request.getContextPath()+"/GuestList.gu");
 	}
 

@@ -16,7 +16,7 @@ public class StudyController extends HttpServlet{
 		String viewPage="/WEB-INF/study2";
 		String uri = request.getRequestURI();
 		String com = uri.substring(uri.lastIndexOf("/"), uri.lastIndexOf("."));
-		
+
 		if(com.equals("/Password")) {
 			viewPage += "/password/password.jsp";
 		}
@@ -30,7 +30,7 @@ public class StudyController extends HttpServlet{
 			command.execute(request, response);
 			viewPage += "/password/password2.jsp";
 		}
-		// 아이디/비밀번호 입력		
+		// 아이디/비밀번호 입력
 		else if(com.equals("/PassInputOk")){
 			command = new PassInputOkCommand();
 			command.execute(request, response);
@@ -42,7 +42,7 @@ public class StudyController extends HttpServlet{
 			command.execute(request, response);
 			viewPage = "/include/message.jsp";
 		}
-		
+
 		request.getRequestDispatcher(viewPage).forward(request, response);
 	}
 }

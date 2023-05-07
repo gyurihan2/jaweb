@@ -13,12 +13,12 @@ public class LoginController extends HttpServlet{
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		LoginInterface command = null;
-		
+
 		String viewPage = "/WEB-INF/study2/login2";
 		String com= request.getRequestURI();
-		
+
 		com = com.substring(com.lastIndexOf("/"),com.lastIndexOf("."));
-		
+
 		if(com.equals("/Login")) {
 			viewPage += "/login.jsp";
 		}
@@ -36,7 +36,7 @@ public class LoginController extends HttpServlet{
 			viewPage = "/include/message.jsp";
 		}
 		else if(com.equals("/MemberMain")) {
-			
+
 			viewPage += "/memberMain.jsp";
 		}
 		else if(com.equals("/Logout")) {
@@ -54,10 +54,10 @@ public class LoginController extends HttpServlet{
 		else if(com.equals("/LoginSearch")) {
 			command = new LoginSearchCommand();
 			command.execute(request, response);
-			
+
 			if(request.getAttribute("loginsearchVo") != null) viewPage +="/memberSearch.jsp";
 			else viewPage = "/include/message.jsp";
-			
+
 		}
 		//회원 수정창
 		else if(com.equals("/Update")) {
@@ -76,7 +76,7 @@ public class LoginController extends HttpServlet{
 			command.execute(request, response);
 			viewPage = "/include/message.jsp";
 		}
-	
+
 		request.getRequestDispatcher(viewPage).forward(request, response);
 	}
 }

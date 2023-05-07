@@ -14,10 +14,10 @@ public class BoardController extends HttpServlet{
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		BoardInterface command = null;
 		String viewPage="/WEB-INF/board";
-		
+
 		String uri = request.getRequestURI();
 		String com = uri.substring(uri.lastIndexOf("/"), uri.lastIndexOf("."));
-		
+
 		if(com.equals("/BoardList")) {
 			command = new BoardListCommand();
 			command.execute(request, response);
@@ -31,9 +31,9 @@ public class BoardController extends HttpServlet{
 			command.execute(request, response);
 			viewPage = "/include/message.jsp";
 		}
-		
-		
+
+
 		request.getRequestDispatcher(viewPage).forward(request, response);
-		
+
 	}
 }

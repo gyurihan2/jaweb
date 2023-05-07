@@ -13,7 +13,7 @@ public class Test01Controller extends HttpServlet{
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("이곳은....서블릿의 /mapping/Test01입니다.");
-		
+
 		// 					/WEB-INF/study2/mapping/test01.jsp
 		String viewPage = "/WEB-INF/study2/mapping/test01.jsp";
 		request.getRequestDispatcher(viewPage).forward(request, response);

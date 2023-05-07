@@ -14,16 +14,16 @@ public class BoardInputOkCommand implements BoardInterface {
 		HttpSession session = request.getSession();
 		String mid = (String) session.getAttribute("sMid");
 		String nickName = (String) session.getAttribute("sName");
-		
+
 		String title = request.getParameter("title") == null ? "":  request.getParameter("title");
 		String content = request.getParameter("content") == null ? "":  request.getParameter("content");
 		String email = request.getParameter("email") == null ? "":  request.getParameter("email");
 		String homePage = request.getParameter("homePage") == null ? "":  request.getParameter("homePage");
 		String hostIp = request.getParameter("hostIp") == null ? "":  request.getParameter("hostIp");
 		String openSw = request.getParameter("openSw") == null ? "":  request.getParameter("openSw");
-		
+
 		BoardVO vo = new BoardVO();
-		
+
 		vo.setMid(mid);
 		vo.setNickName(nickName);
 		vo.setTitle(title);
@@ -32,11 +32,11 @@ public class BoardInputOkCommand implements BoardInterface {
 		vo.setHomePage(homePage);
 		vo.setHostIp(hostIp);
 		vo.setOpenSw(openSw);
-		
+
 		BoardDAO dao = new BoardDAO();
-		
+
 		int res = dao.setBoardInputOk(vo);
-		
+
 		if(res ==1) {
 			request.setAttribute("msg", "게시글이 등록되었습니다.");
 			request.setAttribute("url", request.getContextPath()+"/BoardList.bo");

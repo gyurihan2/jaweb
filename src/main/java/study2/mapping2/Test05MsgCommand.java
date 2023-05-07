@@ -11,7 +11,7 @@ public class Test05MsgCommand implements Test05MiInterface {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String msg ="이곳은 Test5MsgCommand에서 보냅니다~~";
-		
+
 		request.setAttribute("msg", msg);
 
 	}

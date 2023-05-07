@@ -1,10 +1,10 @@
 package cgvProject.TopMenu;
- 
+
 public class LoginVO {
 	private String mid,pwd,name,identiNum,email,phone,address;
 	private String gender;
 	// 회원 등급, 가입일자, 비밀번호 생성(변경일자) 추가필요
-	
+
 	public LoginVO() {
 		// TODO Auto-generated constructor stub
 	}
@@ -16,7 +16,7 @@ public class LoginVO {
 	public String getMid() {
 		return mid;
 	}
-	
+
 	public String getIdentiNum() {
 		return identiNum;
 	}
@@ -67,7 +67,7 @@ public class LoginVO {
 		return "LoginVO [mid=" + mid + ", pwd=" + pwd + ", name=" + name + ", identiNum=" + identiNum + ", email="
 				+ email + ", phone=" + phone + ", address=" + address + ", gender=" + gender + "]";
 	}
-	
-	
-	
+
+
+
 }

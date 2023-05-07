@@ -15,13 +15,13 @@ public class LoginSearch extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String mid = request.getParameter("mid")==null ? "" : request.getParameter("mid");
-		
+
 		LoginDAO dao = new LoginDAO();
-		
+
 		LoginVO vo = dao.getMidCheck(mid);
-		
+
 		PrintWriter out = response.getWriter();
-		
+
 		if(vo.getMid() != null) {
 			request.setAttribute("vo", vo);
 			String viewPage = "/study/0428_database/memberSearch.jsp";

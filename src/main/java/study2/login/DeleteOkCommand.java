@@ -13,11 +13,11 @@ public class DeleteOkCommand implements LoginInterface {
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		LoginDAO dao = new LoginDAO();
-		
+
 		String mid = (String)session.getAttribute("sMid");
-		
+
 		dao.setDeleteOk(mid);
-		
+
 		request.setAttribute("msg", "탈퇴처리되었습니다.");
 		request.setAttribute("url", request.getContextPath()+"/Login.re");
 

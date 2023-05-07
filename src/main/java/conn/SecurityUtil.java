@@ -11,8 +11,8 @@ public class SecurityUtil {
        sh.update(str.getBytes());
        byte byteData[] = sh.digest();
        StringBuffer sb = new StringBuffer();
-       for(int i = 0 ; i < byteData.length ; i++){
-           sb.append(Integer.toString((byteData[i]&0xff) + 0x100, 16).substring(1));
+       for (byte element : byteData) {
+           sb.append(Integer.toString((element&0xff) + 0x100, 16).substring(1));
        }
        sha = sb.toString();
    }catch(NoSuchAlgorithmException e){
@@ -20,5 +20,5 @@ public class SecurityUtil {
        sha = null;
    }
    return sha;
- } 
+ }
 }

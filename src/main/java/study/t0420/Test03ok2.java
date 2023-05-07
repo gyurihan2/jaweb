@@ -17,14 +17,14 @@ public class Test03ok2 extends HttpServlet{
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html; charset=utf-8");
 		PrintWriter out = response.getWriter();
-		
+
 		String name = request.getParameter("name");
 		int age = Integer.parseInt(request.getParameter("age"));
 		String gender = request.getParameter("gender");
 		String[] hobbys= request.getParameterValues("hobby");
-		
+
 		String str="";
-		
+
 		for(String i : hobbys){
 			str += i+", ";
 		}
@@ -34,11 +34,11 @@ public class Test03ok2 extends HttpServlet{
 		System.out.println("나이: " + age);
 		System.out.println("성별: " + gender);
 		System.out.println("취미: " + str);
-		
+
 		out.print("<script>");
 		out.print("alert('완료');");
 		out.print("location.href='"+context+"'");
 		out.print("</script>");
-		
+
 	}
 }

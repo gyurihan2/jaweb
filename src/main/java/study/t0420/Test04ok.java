@@ -18,14 +18,14 @@ public class Test04ok extends HttpServlet{
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html; charset=utf-8");
 		PrintWriter out = response.getWriter();
-		
+
 		String name = request.getParameter("name");
 		int age = Integer.parseInt(request.getParameter("age"));
 		String gender = request.getParameter("gender");
 		String[] hobbys= request.getParameterValues("hobby");
-		
+
 		String str="";
-		
+
 		for(String i : hobbys){
 			str += i+", ";
 		}
@@ -35,8 +35,8 @@ public class Test04ok extends HttpServlet{
 		System.out.println("나이: " + age);
 		System.out.println("성별: " + gender);
 		System.out.println("취미: " + str);
-		
-		
+
+
 		String hostIp = request.getParameter("hostIp");
 		//request 저장소
 		request.setAttribute("name", name);
@@ -44,7 +44,7 @@ public class Test04ok extends HttpServlet{
 		request.setAttribute("gender", gender);
 		request.setAttribute("str", str);
 		request.setAttribute("hostIp", hostIp);
-		
+
 //		처리 후 view로 이동
 		// 경로를 다른곳(직렬화 X)
 //		response.sendRedirect(path);

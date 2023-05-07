@@ -12,12 +12,12 @@ public class TopMenuDAO {
 	private ResultSet rs = null;
 	private LoginVO vo;
 	String sql="";
-	
+
 	public TopMenuDAO() {
 		String url = "jdbc:mysql://localhost:3306/javaweb";
 		String user = "javaweb";
 		String password = "1234";
-		
+
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			conn = DriverManager.getConnection(url, user, password);
@@ -27,7 +27,7 @@ public class TopMenuDAO {
 			System.out.println("Database 연동 실패~~~");
 		}
 	}
-	
+
 	public void pstmtClose() {
 		if(pstmt != null) {
 			try {
@@ -35,7 +35,7 @@ public class TopMenuDAO {
 			} catch (SQLException e) {}
 		}
 	}
-	
+
 	public void rsClose() {
 		if(rs != null) {
 			try {
@@ -48,25 +48,25 @@ public class TopMenuDAO {
 	public LoginVO login(String mid, String pwd) {
 		vo=null;
 		sql = "select * from loginUser where mid=? AND pwd=?";
-		
+
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, mid);
 			pstmt.setString(2, pwd);
 			rs = pstmt.executeQuery();
-			
+
 			if(rs.next()) {
 				vo= new LoginVO(mid, pwd,rs.getString("name"));
 			}
-			
-			
+
+
 		} catch (SQLException e) {
 			System.out.println("SQL 오류 : " + e.getMessage());
 		} finally {
 			rsClose();
 		}
-		
-		
+
+
 		return vo;
 	}
 
@@ -82,7 +82,7 @@ public class TopMenuDAO {
 			pstmt.setString(5, vo.getEmail());
 			pstmt.setString(6, vo.getPhone());
 			pstmt.setString(7, vo.getAddress());
-			
+
 			//반환값: 반영된 레코드 건수를 반환
 			res= pstmt.executeUpdate();
 		} catch (SQLException e) {
@@ -90,10 +90,10 @@ public class TopMenuDAO {
 		} finally {
 			pstmtClose();
 		}
-		
+
 		return res;
 	}
 
-	
-		
+
+
 }

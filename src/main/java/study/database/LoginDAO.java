@@ -13,16 +13,16 @@ public class LoginDAO {
 	private Connection conn = null;
 	private PreparedStatement pstmt = null;
 	private ResultSet rs = null;
-	
+
 	String sql = "";
-	
+
 	private LoginVO vo = null;
-	
+
 	public LoginDAO() {
 		String url = "jdbc:mysql://localhost:3306/javaweb";
 		String user = "root";
 		String password = "1234";
-		
+
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			conn = DriverManager.getConnection(url, user, password);
@@ -32,7 +32,7 @@ public class LoginDAO {
 			System.out.println("Database 연동 실패~~~");
 		}
 	}
-	
+
 	// 사용한 객체의 반납(해제)
 	public void pstmtClose() {
 		if(pstmt != null) {
@@ -41,7 +41,7 @@ public class LoginDAO {
 			} catch (SQLException e) {}
 		}
 	}
-	
+
 	public void rsClose() {
 		if(rs != null) {
 			try {
@@ -54,7 +54,7 @@ public class LoginDAO {
 	// 로그인 체크
 	public LoginVO getLoginCheck(String mid, String pwd) {
 		vo = new LoginVO();
-		
+
 		try {
 			sql = "select * from login where mid=? and pwd=?";
 			pstmt = conn.prepareStatement(sql);
@@ -92,7 +92,7 @@ public class LoginDAO {
 		} finally {
 			pstmtClose();
 		}
-		
+
 	}
 
 	// 아이디 검색처리
@@ -103,7 +103,7 @@ public class LoginDAO {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, mid);
 			rs = pstmt.executeQuery();
-			
+
 			if(rs.next()) {
 				vo.setIdx(rs.getInt("idx"));
 				vo.setMid(rs.getString("mid"));
@@ -112,7 +112,7 @@ public class LoginDAO {
 				vo.setPoint(rs.getInt("point"));
 				vo.setLastDate(rs.getString("lastDate"));
 				vo.setTodayCount(rs.getInt("todayCount"));
-				
+
 				// 날짜 비교
 				/*
 				Date today = new Date();
@@ -154,15 +154,15 @@ public class LoginDAO {
 			sql="select count(*) as cnt from login";
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
-			
+
 			if(rs.next()) res = rs.getInt("cnt");
-			
+
 		} catch (SQLException e) {
 			System.out.println("SQL 오류 : " + e.getMessage());
 		} finally {
 			rsClose();
 		}
-		
+
 		return res;
 	}
 	// 전체회원조회
@@ -174,7 +174,7 @@ public class LoginDAO {
 			pstmt.setInt(1, startIndexNo);
 			pstmt.setInt(2, pageSize);
 			rs = pstmt.executeQuery();
-			
+
 			while(rs.next()) {
 				vo = new LoginVO();
 				vo.setIdx(rs.getInt("idx"));
@@ -194,7 +194,7 @@ public class LoginDAO {
 				if(!strToday.equals(lastDate.substring(0,10))) vo.setTodayCount(0);
 				*/
 				vo.setTodayCount(compareDate(vo.getLastDate(), vo.getTodayCount()));
-				
+
 				vos.add(vo);
 			}
 		} catch (SQLException e) {
@@ -202,7 +202,7 @@ public class LoginDAO {
 		} finally {
 			rsClose();
 		}
-		
+
 		return vos;
 	}
 
@@ -213,52 +213,52 @@ public class LoginDAO {
 		String strToday = sdf.format(today);
 		//String lastDate = vo.getLastDate();
 		if(!strToday.equals(lastDate.substring(0,10))) todayCount = 0;
-		
+
 		return todayCount;
 	}
 
 	//개인정보 수정하기
 	public int setUpdateOk(LoginVO vo) {
 		int res =0;
-		
+
 		try {
 			sql="update login set pwd=?, name=? where mid=?";
-			
+
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, vo.getPwd());
 			pstmt.setString(2, vo.getName());
 			pstmt.setString(3, vo.getMid());
-			
+
 			pstmt.executeUpdate();
-			
+
 			res =1;
-			
+
 		}catch (SQLException e) {
 			System.out.println("SQL 오류 : " + e.getMessage());
 		} finally {
 			pstmtClose();
 		}
-		
+
 		return res;
 	}
 
 	public int setDeleteOk(String mid) {
 		int res=0;
-		
+
 		try {
 			sql="delete from login where mid=?";
-			
+
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, mid);
 			pstmt.executeUpdate();
-			
+
 		}catch (SQLException e) {
 			System.out.println("SQL 오류 : " + e.getMessage());
 		} finally {
 			pstmtClose();
 		}
-		
+
 		return res;
 	}
-	
+
 }

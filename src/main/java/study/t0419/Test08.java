@@ -16,16 +16,16 @@ public class Test08 extends HttpServlet{
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html; charset=utf-8");
 		PrintWriter out = response.getWriter();
-		
+
 		String name = request.getParameter("name");
 		int age = Integer.parseInt(request.getParameter("age"));
-		
+
 		System.out.println("이름: " +name);
 		System.out.println("나이: " +age);
-		
+
 		out.print("이름: " + name +"<br/>");
 		out.print("나이: " + age+"<br/>");
-		out.print("dfjdlskj");	
+		out.print("dfjdlskj");
 	}
-	
+
 }

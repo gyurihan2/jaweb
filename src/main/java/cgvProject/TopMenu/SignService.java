@@ -23,9 +23,9 @@ public class SignService extends HttpServlet{
 		String[] phones = request.getParameterValues("phone");
 		String address = request.getParameter("address") == null ? "" : request.getParameter("address");
 		PrintWriter out = response.getWriter();
-		
+
 		vo = new LoginVO();
-		
+
 		try {
 			vo.setMid(mid);
 			vo.setPwd(pwd);
@@ -34,7 +34,7 @@ public class SignService extends HttpServlet{
 			vo.setEmail(email);
 			vo.setPhone(phones[0]+"-"+phones[1]+"-"+phones[2]);
 			vo.setAddress(address);
-			
+
 		}catch (NullPointerException e) {
 			System.out.println("회원가입 Nullpoint 오류 : " + e.getMessage());
 			out.print("<script>");
@@ -42,7 +42,7 @@ public class SignService extends HttpServlet{
 			out.print("location.href='"+request.getContextPath()+"/cgvProject/homePage/signUp.jsp';");
 			out.print("</script>");
 		}
-		
+
 		if(dao.setSignUp(vo) > 0) {
 			out.print("<script>");
 			out.print("alert('회원가입 완료되었습니다');");
@@ -55,6 +55,6 @@ public class SignService extends HttpServlet{
 			out.print("location.href='"+request.getContextPath()+"/cgvProject/homePage/home.jsp';");
 			out.print("</script>");
 		}
-		
+
 	}
 }

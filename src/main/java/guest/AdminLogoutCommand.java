@@ -12,9 +12,9 @@ public class AdminLogoutCommand implements GuestInterface {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		
+
 		session.removeAttribute("sAdmin");
-		
+
 		request.setAttribute("msg", "관리자 로그아웃~~");
 		request.setAttribute("url", request.getContextPath()+"/GuestList.gu");
 	}

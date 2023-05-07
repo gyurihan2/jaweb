@@ -11,7 +11,7 @@ public class Test02VO {
 	private int tot;
 	private double avg;
 	private char grade;
-	
+
 	public Test02VO(String name, String hakbun, int kor, int eng, int mat, int soc, int sci, int tot, double avg, char grade) {
 		this.name = name;
 		this.hakbun = hakbun;
@@ -24,7 +24,7 @@ public class Test02VO {
 		this.avg = avg;
 		this.grade = grade;
 	}
-	
+
 	public String getName() {
 		return name;
 	}
@@ -90,5 +90,5 @@ public class Test02VO {
 		return "Test02VO [name=" + name + ", hakbun=" + hakbun + ", kor=" + kor + ", eng=" + eng + ", mat=" + mat
 				+ ", soc=" + soc + ", sci=" + sci + ", tot=" + tot + ", avg=" + avg + ", grade=" + grade + "]";
 	}
-	
-}          
+
+}

@@ -11,20 +11,20 @@ public class LoginSearchCommand implements LoginInterface {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String mid = request.getParameter("mid")==null ? "" : request.getParameter("mid");
-		
+
 		LoginDAO dao = new LoginDAO();
-		
+
 		LoginVO vo = dao.getMidCheck(mid);
-		
-		
-		
+
+
+
 		if(vo.getMid() != null) {
 			request.setAttribute("msg", "NO");
 			request.setAttribute("url", request.getContextPath()+"/MemberSearch.re?mid="+mid);
 		}
 		else {
 			request.setAttribute("msg", "검색한 회원이 존재하지 않습니다.");
-			request.setAttribute("url", request.getContextPath()+"/Mebermain.re");	
+			request.setAttribute("url", request.getContextPath()+"/Mebermain.re");
 		}
 
 	}

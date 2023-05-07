@@ -11,15 +11,15 @@ public class GuestDAO {
 	private Connection conn =null;
 	private PreparedStatement pstmt= null;
 	private ResultSet rs = null;
-	
+
 	String sql="";
 	GuestVO vo = null;
-	
+
 	public GuestDAO() {
 		String url="jdbc:mysql://localhost:3306/javaweb";
 		String user="root";
 		String password="1234";
-		
+
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			conn = DriverManager.getConnection(url, user, password);
@@ -29,7 +29,7 @@ public class GuestDAO {
 			System.out.println("DB 연결 실패"+e.getMessage());
 		}
 	}
-	
+
 	// DB연결 connection 소멸
 	public void pstmtClose() {
 		if(pstmt != null) {
@@ -38,7 +38,7 @@ public class GuestDAO {
 			} catch (SQLException e) {}
 		}
 	}
-	
+
 	public void rsClose() {
 		if(rs != null) {
 			try {
@@ -51,14 +51,14 @@ public class GuestDAO {
 	//방문소감 전체 보기
 	public ArrayList<GuestVO> getGuestList(int startIndexNo, int pageSize) {
 		 ArrayList<GuestVO> vos = new ArrayList<>();
-		 
+
 		 try {
 			 sql = "select * from guest order by idx desc limit ?, ?";
 			 pstmt = conn.prepareStatement(sql);
 			 pstmt.setInt(1, startIndexNo);
 			 pstmt.setInt(2, pageSize);
 			 rs = pstmt.executeQuery();
-			 
+
 			 while(rs.next()) {
 				 vo = new GuestVO();
 				 vo.setIdx(rs.getInt("idx"));
@@ -68,24 +68,24 @@ public class GuestDAO {
 				 vo.setContent(rs.getString("content"));
 				 vo.setVisitDate(rs.getString("visitDate"));
 				 vo.setHostIp(rs.getString("hostIp"));
-				 
+
 				 vos.add(vo);
-				 
+
 			 }
-			 
+
 		 }catch (SQLException e) {
 			System.out.println("SQL 구문오류" + e.getMessage());
 		}finally {
 			rsClose();
 		}
-		 
+
 		return vos;
 	}
 
 	//방명록에 글 올리기
 	public int setGuestInputOk(GuestVO vo) {
 		int res = 0;
-		
+
 		try {
 			sql="insert into guest values(default,?,?,?,?,default,?)";
 			pstmt = conn.prepareStatement(sql);
@@ -94,59 +94,59 @@ public class GuestDAO {
 			pstmt.setString(3, vo.getEmail());
 			pstmt.setString(4, vo.getHomePage());
 			pstmt.setString(5, vo.getHostIp());
-			
+
 			pstmt.executeUpdate();
 			res=1;
-	
+
 		}catch (SQLException e) {
 			System.out.println("SQL 구문오류" + e.getMessage());
 		}finally {
 			pstmtClose();
 		}
-		
+
 		return res;
 	}
 
 	// 총 record 건수
 	public int getTotRecCnt() {
 		int totRecCnt =0;
-		
+
 		try {
 			sql = "select count(*) as cnt from guest";
 			pstmt = conn.prepareStatement(sql);
-			
+
 			rs = pstmt.executeQuery();
-			
+
 			if(rs.next()) totRecCnt = rs.getInt("cnt");
-			
+
 		}catch (SQLException e) {
 			System.out.println("SQL 구문오류" + e.getMessage());
 		}finally {
 			rsClose();
 		}
-		
+
 		return totRecCnt;
 	}
 
 	//방명록 게시물 삭제
 	public int setGusetDelete(int idx) {
 		int res = 0;
-		
+
 		try {
 			sql = "delete from guest where idx=?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, idx);
-			
+
 			res = pstmt.executeUpdate();
-			
+
 		}catch (SQLException e) {
 			System.out.println("SQL 구문오류" + e.getMessage());
 		}finally {
 			pstmtClose();
 		}
-		
-		
+
+
 		return res;
 	}
-	
+
 }
